@@ -28,6 +28,12 @@ app.get('/', (req,res) => {
 })
 
 app.use('/auth', auth);
+
+// Passport Middlware
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 const port = process.env.PORT || 5000;
 app.listen(port, ()=> {
     console.log(`server starter on port ${port}`)
