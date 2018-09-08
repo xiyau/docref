@@ -4,12 +4,15 @@ const passport = require('passport');
 const cookieParse = require('cookie-parser');
 const session = require('express-session');
 
+
 //Load User Model
 require('./models/User');
 
 //passport config
 require('./config/passport')(passport);
+
 // Load Routes
+const index = require('./routes/index');
 const auth = require('./routes/auth');
 
 //Load keys
@@ -25,9 +28,6 @@ mongoose.connect(keys.mongoURI)
 
 const app = express();
 
-app.get('/', (req,res) => {
-    res.send('it works');
-})
 
 
 //setup cookieparse and bodyparser
@@ -49,6 +49,7 @@ app.use((req,res,next) => {
 });
 
 //auth route
+app.use('/',index)
 app.use('/auth', auth);
 
 
