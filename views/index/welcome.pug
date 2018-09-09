@@ -1,0 +1,11 @@
+extends ../layouts/main
+
+block content
+    h1 Welcome
+    p Welcome to docref 1.0.0
+    p
+    | Post docs from the best and worst of your life and choose for them to be read by the world or completley private as your own personal docs  
+    if(!user)
+        a.btn.red.darken-1(href="/auth/google") Login with google
+            i.fa.fa-google.left
+            

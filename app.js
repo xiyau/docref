@@ -1,4 +1,5 @@
 const express = require('express');
+const pug = require('pug');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieParse = require('cookie-parser');
@@ -28,6 +29,7 @@ mongoose.connect(keys.mongoURI)
 
 const app = express();
 
+app.set('view engine' , 'pug');
 
 
 //setup cookieparse and bodyparser
@@ -49,7 +51,7 @@ app.use((req,res,next) => {
 });
 
 //auth route
-app.use('/',index)
+app.use('/', index);
 app.use('/auth', auth);
 
 

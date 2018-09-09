@@ -1,0 +1,70 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
+    title StoryBooks
+  body
+    block header
+        nav.grey.darken-3
+            .container
+                .nav-wrapper
+                a.brand-logo.center(href="/docs") Docs-Refs
+                a.button-collapse.show-on-large(href="#" data-activates="main-menu")
+                    i.fa.fa-bars
+                // RIGHT NAV
+                ul.right.hide-on-small-only
+                    if(user)
+                        li
+                            a(href="/dashboard") Welcome #{user.firstName}
+                        li
+                            a(href="/auth/logout")
+                                i.fa.fa-sign-out
+                                | Logout
+
+                    li
+                    a(href="/docs") 
+                        i.fa.fa-book
+                        | Public Docs
+                // Side Nav
+                ul.side-nav#main-menu
+                    li
+                    if(user)
+
+                    else
+                        a.btn.red.darken-1(href="/auth/google")
+                            i.fa.fa-google.left
+                            | Login with Google
+                    li
+                        a(href="/docs")
+                            i.fa.fa-book
+                            | Public Docs
+                    li.divider
+                    if(user)
+                        li
+                            a(href="/dashboard")
+                                i.fa.fa-cog
+                                | Dashboard
+                        li
+                            a(href="/docs/my")
+                                i.fa.fa-user
+                                | My Docs
+                        li
+                            a(href="/auth/logout")
+                                i.fa.fa-sign-out
+                                | Logout
+    main
+        .container
+            block content
+
+
+
+    script(src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+    script. 
+        $(document).ready( () => {
+            $('.button-collapse').sideNav();
+        });
