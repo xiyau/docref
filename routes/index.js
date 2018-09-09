@@ -6,7 +6,7 @@ router.get('/', (req,res)=> {
 });
 
 router.get('/dashboard', (req,res)=> {
-    res.send('it is dashboard');
+    res.render('index/dashboard');
 });
 
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const pug = require('pug');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -13,11 +14,12 @@ require('./models/User');
 require('./config/passport')(passport);
 
 // Load Routes
+const docs = require('./routes/docs');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
 
 //Load keys
-const keys = require('./config/keys')
+const keys = require('./config/keys');
 //Mongoose connect
 mongoose.connect(keys.mongoURI)
     .then(()=> console.log('mongodb connected'))
@@ -50,8 +52,12 @@ app.use((req,res,next) => {
     next();
 });
 
+// set static folder
+app.use(express.static(path.join(__dirname, 'public')));
+
 //auth route
 app.use('/', index);
+app.use('/docs', docs)
 app.use('/auth', auth);
 
 

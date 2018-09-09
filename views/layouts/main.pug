@@ -6,13 +6,14 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
     link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous")
+    link(rel="stylesheet" href="/css/style.css")
     title StoryBooks
   body
     block header
         nav.grey.darken-3
             .container
                 .nav-wrapper
-                a.brand-logo.center(href="/docs") Docs-Refs
+                a.brand-logo.center(href="/docs") Docs
                 a.button-collapse.show-on-large(href="#" data-activates="main-menu")
                     i.fa.fa-bars
                 // RIGHT NAV
@@ -29,6 +30,7 @@ html(lang="en")
                     a(href="/docs") 
                         i.fa.fa-book
                         | Public Docs
+                        
                 // Side Nav
                 ul.side-nav#main-menu
                     li
@@ -56,10 +58,39 @@ html(lang="en")
                             a(href="/auth/logout")
                                 i.fa.fa-sign-out
                                 | Logout
+
+    //materialize floating button
+    if(user)
+        .fixed-action-btn
+            a.btn-floating.btn-large.red(href='/stories/add')
+                i.fa.fa-plus
+    //dynamic content
     main
         .container
             block content
 
+    block footer
+        footer.page-footer.grey.darken-3
+            .container
+                .row
+                    .col.l6.s12
+                        h5.white-text docrefs
+                        p.grey-text.text-lighten-4 have a doc that you don't want to forget.
+                    .col.l4.offset-l2.s12
+                        h5.white-text Links
+                        ul
+                            li
+                                a.grey-text.text-lighten-3(href="#!") Link 1
+                            li
+                                a.grey-text.text-lighten-3(href="#!") Link 2
+                            li
+                                a.grey-text.text-lighten-3(href="#!") Link 3
+                            li
+                                a.grey-text.text-lighten-3(href="#!") Link 4
+        .footer-copyright
+            .container
+                | © 2018 Copyright docrefs
+                a.grey-text.text-lighten-4.right(href="#!") More Links
 
 
     script(src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous")
