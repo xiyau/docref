@@ -1,3 +1,16 @@
 extends ../layouts/main
 block content
-    h1 show single story
+    .row
+        .col.s12.m8
+            h3= doc.title
+            .card.story
+                .card-content
+                    span.card-title #{formatDate(doc.date,'MMMM Do YYYY')}
+                    | !{doc.body}
+        .col.s12.m4
+            .card.center-align
+                .card-content
+                    span.card-title #{doc.user.firstName} #{doc.user.lastName}
+                    img.circle.responsive-img(src=doc.user.image)
+                .card-action
+                    a(href="/stories/user/"+ doc.user.id) More From #{doc.user.firstName}

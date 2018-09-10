@@ -31,6 +31,19 @@ router.get('/add',ensureAuthenticated, (req,res)=> {
     res.render('docs/add');
 });
 
+//showing a single story
+router.get('/show/:id', (req,res) => {
+    Doc.findOne({
+        _id: req.params.id
+    })
+    .populate('user')
+    .then(doc => {
+        res.render('docs/show',{
+            doc:doc
+        })
+    })
+});
+
 //Process Add Story
 router.post('/',(req,res)=>{
     let allowComments;
