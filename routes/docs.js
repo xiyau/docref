@@ -14,5 +14,10 @@ router.get('/add',ensureAuthenticated, (req,res)=> {
     res.render('docs/add');
 });
 
+//Process Add Story
+router.post('/',(req,res)=>{
+    res.send('whats wrong');
+})
+
 
 module.exports = router;

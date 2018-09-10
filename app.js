@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const pug = require('pug');
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const cookieParse = require('cookie-parser');
@@ -30,6 +31,8 @@ mongoose.connect(keys.mongoURI)
 
 
 const app = express();
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 app.set('view engine' , 'pug');
 
