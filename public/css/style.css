@@ -9,9 +9,14 @@ body {
   }
 
 
+i.fa.fa-bars{
+    font-size: 25px;
+}
+
 .nav-wrapper .fa-bars{
     font-size:25px;
 } 
+
 
 footer{
     margin-top:20px;
