@@ -6,11 +6,25 @@ const Doc = mongoose.model('docs');
 const User = mongoose.model('users');
 
 router.get('/', (req,res)=> {
-    res.render('docs/index');
+    Doc.find({status:'public'})
+        .populate('user')
+        .then(docs => {
+            res.render('docs/index',{
+                docs:docs
+            });
+        });
+    
 });
 
 router.get('/my',ensureAuthenticated, (req,res)=> {
-    res.render('docs/index');
+    Doc.find({})
+        .populate('user')
+        .then(docs => {
+            res.render('docs/index',{
+                docs:docs
+            });
+        });
+    
 });
 
 router.get('/add',ensureAuthenticated, (req,res)=> {

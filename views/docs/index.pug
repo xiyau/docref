@@ -1,3 +1,20 @@
 extends ../layouts/main
 block content
-    h1 public stories
+    h1 docs
+    .row
+        each doc in docs
+            .col.s12.m4
+                .card
+                    .card-image
+                        a.btn-floating.halfway-fab.red(href="/docs/edit/"+ doc.id)
+                            i.fa.fa-pencil
+                    .card-content.center-align
+                        h5=doc.title
+                        p.story-text !{doc.body}
+                        br
+                        .chip
+                            img(src=user.image) 
+                            |#{user.firstName} #{user.lastName}
+                    .card-action.center-align
+                        a.btn.grey(href="/docs/show/" + doc.id) Read More
+                        
