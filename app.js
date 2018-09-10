@@ -10,6 +10,7 @@ const session = require('express-session');
 
 //Load User Model
 require('./models/User');
+require('./models/doc')
 
 //passport config
 require('./config/passport')(passport);
