@@ -22,6 +22,10 @@ const auth = require('./routes/auth');
 
 //Load keys
 const keys = require('./config/keys');
+
+
+// hepers 
+const {truncate, stripTags} = require('./helpers/hbs');
 //Mongoose connect
 mongoose.connect(keys.mongoURI)
     .then(()=> console.log('mongodb connected'))
@@ -51,6 +55,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set global Vars
+app.locals.truncate = truncate;
+app.locals.stripTags = stripTags;
 app.use((req,res,next) => {
     res.locals.user = req.user || null;
     next();

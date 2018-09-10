@@ -1,6 +1,6 @@
 module.exports = {
 
-    truncate: function (str, len){
+    truncate: function (str, len) {
         if(str.length > len && str.length > 0){
             var new_str = str + " ";
             new_str = str.substr(0,len);
@@ -9,5 +9,9 @@ module.exports = {
             return new_str + '...';
         }
         return str;
+    },
+
+    stripTags: function(input) {
+        return input.replace(/<(?:.|\n)*?>/gm, '');
     }
 }

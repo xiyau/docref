@@ -10,7 +10,7 @@ block content
                             i.fa.fa-pencil
                     .card-content.center-align
                         h5=doc.title
-                        p.story-text !{doc.body}
+                        p.story-text #{truncate(stripTags(doc.body),30)}
                         br
                         .chip
                             img(src=user.image) 
