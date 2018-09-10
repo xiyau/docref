@@ -30,7 +30,7 @@ html(lang="en")
                     a(href="/docs") 
                         i.fa.fa-book
                         | Public Docs
-                        
+
                 // Side Nav
                 ul.side-nav#main-menu
                     li
@@ -62,7 +62,7 @@ html(lang="en")
     //materialize floating button
     if(user)
         .fixed-action-btn
-            a.btn-floating.btn-large.red(href='/stories/add')
+            a.btn-floating.btn-large.red(href='/docs/add')
                 i.fa.fa-plus
     //dynamic content
     main
@@ -80,13 +80,15 @@ html(lang="en")
                         h5.white-text Links
                         ul
                             li
-                                a.grey-text.text-lighten-3(href="#!") Link 1
+                                a.grey-text.text-lighten-3(href="/docs") 
+                                    i.fa.fa-book
+                                    | Public Docs 
+                                    
                             li
-                                a.grey-text.text-lighten-3(href="#!") Link 2
-                            li
-                                a.grey-text.text-lighten-3(href="#!") Link 3
-                            li
-                                a.grey-text.text-lighten-3(href="#!") Link 4
+                                a.grey-text.text-lighten-3(href="/about") 
+                                    i.fa.fa-cog 
+                                    | About
+                                    
         .footer-copyright
             .container
                 | © 2018 Copyright docrefs
