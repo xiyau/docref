@@ -25,7 +25,7 @@ const keys = require('./config/keys');
 
 
 // hepers 
-const {truncate, stripTags, formatDate} = require('./helpers/hbs');
+const {truncate, stripTags, formatDate, select, selecting} = require('./helpers/hbs');
 
 
 //Mongoose connect
@@ -57,6 +57,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set global Vars
+app.locals.selecting = selecting; 
+app.locals.select = select;
 app.locals.formatDate = formatDate;
 app.locals.truncate = truncate;
 app.locals.stripTags = stripTags;

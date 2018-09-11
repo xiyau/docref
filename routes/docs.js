@@ -34,12 +34,14 @@ router.get('/add',ensureAuthenticated, (req,res)=> {
 
 //Edit Story Form
 router.get('/edit/:id', ensureAuthenticated, (req,res) => {
-    Doc.find({status:'public'})
-    .then(docs => {
+    Doc.findOne({
+        _id: req.params.id
+    })
+    .then(doc => {
         res.render('docs/edit',{
-            docs:docs
-        });
-    });
+            doc:doc
+        })
+    })
 });
 
 //showing a single story
