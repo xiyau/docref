@@ -27,8 +27,19 @@ router.get('/my',ensureAuthenticated, (req,res)=> {
     
 });
 
+// Add Story Form
 router.get('/add',ensureAuthenticated, (req,res)=> {
     res.render('docs/add');
+});
+
+//Edit Story Form
+router.get('/edit/:id', ensureAuthenticated, (req,res) => {
+    Doc.find({status:'public'})
+    .then(docs => {
+        res.render('docs/edit',{
+            docs:docs
+        });
+    });
 });
 
 //showing a single story

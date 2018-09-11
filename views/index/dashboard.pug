@@ -1,4 +1,30 @@
 extends ../layouts/main
 block content
     h1 Welcome #{user.firstName}
-    h4 Your Stories
+    h4 Your docs
+    if(docs)
+    table.striped
+        thead
+            tr
+                th Title
+                th Date
+                th Status
+                th
+        tbody
+            each doc in docs
+                tr
+                    td
+                        a(href="/docs/show/"+ doc.id) #{doc.title}
+                    td #{formatDate(doc.date,'MMMM Do YYYY')}
+                    td
+                        span.dash-status #{doc.status}
+                    td
+                        a.btn.left-align(href="/docs/edit/"+ doc.id)
+                            i.fa.fa-pencil
+                            |  Edit
+                        form#delete-form(action="/docs/"+doc.id method="post")
+                            button.btn.red(type="submit")
+                                i.fa.fa-remove
+                                |  Delete
+    if(!docs)
+        p You have not created any stories yet
