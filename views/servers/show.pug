@@ -1,0 +1,38 @@
+extends ../layouts/main
+block content
+    .row
+        .col.s12.m8
+            .card
+                img.card-img-top(src="..." alt="Card image cap")
+                .card-content
+                    h2.card-title #{server.name}
+                    p.card-text
+                        | Some quick example text to build on the card title and make up the bulk of the card's content.
+                    table.table
+                        tr
+                            th IP ADDRESS:
+                            td #{server.ip}
+                        tr
+                            th FQDN:
+                            td #{server.fqdn}
+                        tr
+                            th LOCATION:
+                            td #{server.location}
+                        tr
+                            th STATUS:
+                            td #{server.status}
+
+
+                .card-action
+                    a.card-link(href="#") Server Web
+                    a.card-link(href="#") Servers
+
+
+                        
+        .col.s12.m4
+            .card.center-align
+                .card-content
+                    span.card-title #{server.user.firstName} #{server.user.lastName}
+                    img.circle.responsive-img(src=server.user.image)
+                .card-action
+                    a(href="/server/user/"+ server.user.id) More From #{server.user.firstName}

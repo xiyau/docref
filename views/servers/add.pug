@@ -1,0 +1,48 @@
+extends ../layouts/main
+block content
+    h1 Add Server
+    .row
+        form.col.s12(action="/servers" method="post")
+            .row
+                .input-field
+                    input(type="text" name="name")
+                    label(for="name") Name
+            .row
+                .input-field
+                    input(type="text" name="fqdn")
+                    label(for="fqdn") FQDN
+            .row
+                .input-field
+                    input(type="text" name="ip")
+                    label(for="ip") Ip address
+            .row
+                .input-field
+                    input(type="text" name="location")
+                    label(for="location") Location
+            .row
+                .input-field
+                    select.mdb-select.md-form.colorful-select.dropdown-primary(multiple="" searchable="Search here.." name="services")
+                        option(value="" disabled="" selected="") choose services
+                        option(value="1") FILESERVER
+                        option(value="2") WEBSERVER
+                        option(value="3") DNS
+                        option(value="4") DHCP
+                        option(value="5") ADDC
+                        option(value="6") ADMS
+                    label Choose Services
+            .row
+                .input-field
+                    select(name="status")
+                        option(value="online" selected="") Online
+                        option(value="offline") Offline
+                        option(value="development") Development
+                    label(for="status") Status
+            .row
+                
+            .row
+                .input-field
+                    h5 Description:
+                    textarea(name="description")
+            input.btn(type="submit" value="Save")
+
+    

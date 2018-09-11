@@ -10,12 +10,14 @@ const session = require('express-session');
 
 //Load User Model
 require('./models/User');
-require('./models/doc')
+require('./models/doc');
+require('./models/Server');
 
 //passport config
 require('./config/passport')(passport);
 
 // Load Routes
+const servers = require('./routes/servers');
 const docs = require('./routes/docs');
 const index = require('./routes/index');
 const auth = require('./routes/auth');
@@ -72,8 +74,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //auth route
 app.use('/', index);
-app.use('/docs', docs)
+app.use('/servers', servers);
+app.use('/docs', docs);
 app.use('/auth', auth);
+
 
 
 
