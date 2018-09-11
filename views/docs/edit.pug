@@ -1,6 +1,6 @@
 extends ../layouts/main
 block content
-    h1 Edit form  #{selecting(doc.status, "public")}
+    h1 Edit form
     .row
         form.col.s12(action="/docs" method="post")
             .row
@@ -16,7 +16,7 @@ block content
                     label(for="status") Status
             .row
                 p
-                    input#filled-in-box.filled-in(type="checkbox" name="allowComments" checked="checked")
+                    input#filled-in-box.filled-in(type="checkbox" name="allowComments"  checked=doc.allowComments ? true : false )
                     label(for="filled-in-box") Allow Comments
             .row
                 .input-field
