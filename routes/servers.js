@@ -36,9 +36,19 @@ router.get('/add',(req,res) => {
 
 // Process Server Add form post request
 router.post('/', (req,res) => {
-    console.log(req.body);
+    console.log(req.body.services);
+    newservices = [];
+    servicess = ['fileserver', 'webserver', 'dns', 'dhcp' , 'addc', 'adms'];
+    some = [];
+    some = Object.keys(req.body.services);
 
+    for(let i = 0; i < some.length; i++){
+            //reques.body.services[i] = 3
+            newservices.push(servicess[some[i]])
+        
+        }
 
+        console.log(newservices);
 
     //building the server object
     const newServer = {
@@ -48,8 +58,9 @@ router.post('/', (req,res) => {
         location: req.body.location,
         status: req.body.status,
         description: req.body.description,
-        //services: req.body.services,
+        //services: services.push,
         user: req.user.id
+        //services: req.body.services,
 
         }
     

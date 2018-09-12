@@ -43,9 +43,9 @@ const ServerSchema = new Schema({
     location: {
         type: String
     },
-    //services: [{
-    //    serviceName: String
-    //}],
+    services: [{
+        serviceName: String
+    }],
     loginCredentials: String,
     description: String,
     issues: [{
