@@ -7,7 +7,7 @@ block content
                 .card-content
                     h2.card-title #{server.name}
                     p.card-text
-                        | Some quick example text to build on the card title and make up the bulk of the card's content.
+                        | #{server.description}
                     table.table
                         tr
                             th IP ADDRESS:
@@ -24,7 +24,7 @@ block content
 
 
                 .card-action
-                    a.card-link(href="#") Server Web
+                    a.card-link(href=server.ip) Server Web
                     a.card-link(href="#") Servers
 
 

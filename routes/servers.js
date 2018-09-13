@@ -6,8 +6,9 @@ const Server = mongoose.model('servers');
 const {ensureAuthenticated, ensureGuest} = require('../helpers/auth')
 
 
-router.get('/index',ensureAuthenticated, (req,res)=> {
-    Server.find({user: req.user.id})
+router.get('/dashboard',ensureAuthenticated, (req,res)=> {
+    Server.find({})
+        .populate('user')
         .then(servers => {
             res.render('servers/index',{
                 servers:servers

@@ -7,6 +7,29 @@ block content
                 .card-content
                     span.card-title #{formatDate(doc.date,'MMMM Do YYYY')}
                     | !{doc.body}
+            if(doc.allowComments)
+                .card
+                    .card-content
+                        span.card-title Comments
+                        if(user)
+                            form(method="post" action="/docs/comment/"+ doc.id)
+                                .input-field
+                                    textarea.materialize-textarea(name="commentBody")
+                                    label Add Comment
+                                input.btn(type="submit" value="Submit")
+                        else
+                            P please 
+                                a(href="/auth/google") login 
+                                |to leave a comment
+                each comment in doc.comments
+                    .card
+                        .card-content
+                            h5=comment.commentBody
+                            .chip
+                                img(src=comment.commentUser.image)
+                                | #{comment.commentUser.firstName} #{comment.commentUser.lastName}
+                            br
+                            small Posted: #{formatDate(comment.commentDate,'MMMM Do YYYY')}            
         .col.s12.m4
             .card.center-align
                 .card-content

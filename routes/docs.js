@@ -50,6 +50,7 @@ router.get('/show/:id', (req,res) => {
         _id: req.params.id
     })
     .populate('user')
+    .populate('comments.commentUser')
     .then(doc => {
         res.render('docs/show',{
             doc:doc
@@ -83,6 +84,25 @@ router.post('/',(req,res)=>{
             res.redirect(`/docs/show/${doc.id}`);
         });
 })
+
+// Add Comment
+router.post('/comment/:id', (req,res) => {
+    Doc.findOne({
+        _id: req.params.id
+    })
+    .then(doc => {
+        const newComment = {
+            commentBody: req.body.commentBody,
+            commentUser: req.user.id
+        }
+
+        doc.comments.unshift(newComment);
+        doc.save()
+        .then(doc => {
+            res.redirect(`/docs/show/${doc.id}`);
+        });
+    });
+});
 
 
 module.exports = router;

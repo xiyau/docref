@@ -1,0 +1,25 @@
+extends ../layouts/main
+block content
+    .container
+        h2 Servers
+        table.responsive-table
+            thead
+                tr
+                    th(scope="col") Name
+                    th(scope="col") IP
+                    th(scope="col") FQDN
+                    th(scope="col") Status
+                    th(scope="col") Date
+                    th(scope="col") User
+                    th(scope="col") Description
+            tbody
+                each serv in servers
+                    tr
+                        th(scope="row") #{serv.name}
+                        td(data-title="Released") #{serv.ip}
+                        td(data-title="Studio") #{serv.fqdn}
+                        td(data-title="Worldwide Gross" ) #{serv.status}
+                        td(data-title="Domestic Gross" ) #{formatDate(serv.date,'MMMM Do YYYY')}	
+                        td(data-title="Foreign Gross" ) #{serv.user.lastName}
+                        td(data-title="Budget" ) #{serv.description}
+                
